@@ -61,10 +61,16 @@ let notes: Note[] = [
 
 export const getNotes = (): Note[] => notes;
 export const findOneNote = (findId: number) => notes.find((note) => Number(note.id) === Number(findId));
-export const createOneNote = (newNote: Note) => (notes = [...notes, newNote]);
-export const updateOneNote = (editId: number, newNote: Note) => {
-    deleteOneNote(editId);
-    createOneNote(newNote);
+export const createOneNote = (newNote: Note) => {
+    const newId = findNextId();
+    notes = [...getNotes(), { ...newNote, id: newId }];
+    return findOneNote(newId);
+};
+export const updateOneNote = (updatedNote: Note) => {
+    const noteId = updatedNote.id;
+    deleteOneNote(noteId);
+    notes = [...getNotes(), updatedNote];
+    return findOneNote(noteId);
 };
 export const deleteOneNote = (removeId: number) => (notes = [...notes.filter((note) => Number(note.id) !== Number(removeId))]);
 
@@ -84,4 +90,10 @@ export const calcCategoryCounts = () => {
     });
 
     return categoryCounts;
+}
+
+const findNextId = () => {
+    const notes = getNotes();
+    const newId = notes.reduce((accum, item) => (accum < item.id ? (accum = item.id) : accum), 0) + 1;
+    return newId;
 }
