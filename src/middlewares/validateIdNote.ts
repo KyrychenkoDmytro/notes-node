@@ -3,7 +3,7 @@ import * as yup from "yup";
 import { idSchema, editSchema } from "../schema";
 import HttpError from "../helpers/httpErrors";
 import { Note } from "../types/interfaces";
-import { findOneNote } from "../repositories/notesRepository";
+import { findOneNote } from "../services/notesRepository";
 
 export const validateNoteId = (req: Request, res: Response, next: NextFunction) => {
 

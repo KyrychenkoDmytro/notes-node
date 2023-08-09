@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getNotes } from "../repositories/notesRepository";
+import { getNotes } from "../services/notesRepository";
 import HttpError from "../helpers/httpErrors";
 
 const getAllNotes = async (req: Request, res: Response) => {

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { calcCategoryCounts } from "../repositories/notesRepository";
+import { calcCategoryCounts } from "../services/notesRepository";
 import HttpError from "../helpers/httpErrors";
 
 const getNotesStats = async (req: Request, res: Response) => {

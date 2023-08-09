@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { findOneNote } from "../repositories/notesRepository";
+import { findOneNote } from "../services/notesRepository";
 import HttpError from "../helpers/httpErrors";
 
 const getNote = async (req: Request, res: Response, next: NextFunction) => {

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { updateOneNote, findOneNote } from '../repositories/notesRepository';
+import { updateOneNote, findOneNote } from '../services/notesRepository';
 import HttpError from '../helpers/httpErrors';
 
 const editNote = async (req: Request, res: Response, next: NextFunction) => {
@@ -16,12 +16,12 @@ const editNote = async (req: Request, res: Response, next: NextFunction) => {
             content: bodyNote.content || findNote.content,
             archived: bodyNote.archived !== undefined ? bodyNote.archived : findNote.archived,
         };
-    
+
         const updatedNote = updateOneNote(editedNote);
-    
+
         return res.status(200).json({ updatedNote, message: "Updated success" });
     }
-    
+
 
     throw new HttpError(404, "Note was not found");
 };

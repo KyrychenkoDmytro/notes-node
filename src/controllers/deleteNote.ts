@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { deleteOneNote, findOneNote } from '../repositories/notesRepository';
+import { deleteOneNote, findOneNote } from '../services/notesRepository';
 import HttpError from '../helpers/httpErrors';
 
 const deleteNote = async (req: Request, res: Response, next: NextFunction) => {

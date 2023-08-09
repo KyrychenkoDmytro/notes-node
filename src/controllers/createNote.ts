@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import HttpError from "../helpers/httpErrors";
-import { createOneNote } from "../repositories/notesRepository";
+import { createOneNote } from "../services/notesRepository";
 
 const createNote = async (req: Request, res: Response, next: NextFunction) => {
     const newNote = req.body;
